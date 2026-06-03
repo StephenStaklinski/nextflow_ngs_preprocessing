@@ -1,0 +1,28 @@
+report_comment: >
+  Minimal DNA FASTQ preprocessing training workflow: raw FastQC, fastp trimming,
+  trimmed FastQC, variant calling, caller comparison, and MultiQC aggregation.
+show_analysis_paths: true
+module_order:
+  - fastqc:
+      name: 'FastQC raw and trimmed reads'
+  - fastp:
+      name: 'fastp trimming'
+  - samtools:
+      name: 'SAMtools alignment QC'
+  - bcftools:
+      name: 'BCFtools variant QC'
+  - custom_content:
+      name: 'FreeBayes variant QC and caller comparison'
+report_section_order:
+  fastqc:
+    order: 600
+  fastp:
+    order: 500
+  samtools:
+    order: 400
+  bcftools:
+    order: 300
+  freebayes_variant_qc:
+    order: 290
+  variant_caller_comparison:
+    order: 280
