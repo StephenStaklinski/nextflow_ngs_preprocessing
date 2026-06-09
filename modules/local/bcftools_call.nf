@@ -2,11 +2,6 @@ process BCFTOOLS_CALL {
     tag "${meta.id}"
     label 'process_low'
 
-    publishDir "${params.outdir}/variants/vcf/bcftools", mode: 'copy', pattern: "*.vcf.gz*"
-    publishDir "${params.outdir}/variants/qc", mode: 'copy', pattern: "*.bcftools.stats.txt"
-    publishDir "${params.outdir}/variants/tables/bcftools", mode: 'copy', pattern: "*.bcftools.variants.tsv"
-    publishDir "${params.outdir}/variants/reports/bcftools", mode: 'copy', pattern: "*.bcftools.variants.html"
-
     input:
     tuple val(meta), path(bam), path(bai), path(fasta), path(fai)
 

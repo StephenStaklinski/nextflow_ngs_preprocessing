@@ -2,8 +2,6 @@ process SAMTOOLS_SORT {
     tag "${meta.id}"
     label 'process_low'
 
-    publishDir "${params.outdir}/alignment/bam", mode: 'copy'
-
     input:
     tuple val(meta), path(sam)
 

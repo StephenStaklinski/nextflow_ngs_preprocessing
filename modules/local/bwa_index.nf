@@ -2,8 +2,6 @@ process BWA_INDEX {
     tag "reference"
     label 'process_single'
 
-    publishDir "${params.outdir}/reference", mode: 'copy'
-
     input:
     path fasta
 

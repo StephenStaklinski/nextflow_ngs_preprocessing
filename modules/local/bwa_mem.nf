@@ -2,8 +2,6 @@ process BWA_MEM {
     tag "${meta.id}"
     label 'process_low'
 
-    publishDir "${params.outdir}/alignment/sam", mode: 'copy', pattern: "*.sam"
-
     input:
     tuple val(meta), path(reads), path(fasta), path(index_files)
 

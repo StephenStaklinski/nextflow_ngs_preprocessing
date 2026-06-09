@@ -2,10 +2,9 @@ process MULTIQC {
     tag "multiqc"
     label 'process_single'
 
-    publishDir "${params.outdir}/multiqc", mode: 'copy'
-
     input:
     path multiqc_files
+    path multiqc_config
 
     output:
     path "multiqc_report.html", emit: report
@@ -16,7 +15,7 @@ process MULTIQC {
     """
     multiqc \\
         --title "${params.multiqc_title}" \\
-        --config "${projectDir}/assets/multiqc_config.yml" \\
+        --config "${multiqc_config}" \\
         --outdir . \\
         --filename multiqc_report.html \\
         .

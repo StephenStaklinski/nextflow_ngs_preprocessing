@@ -17,6 +17,7 @@ include { VARIANT_MULTIQC } from './modules/local/variant_multiqc'
 include { MULTIQC } from './modules/local/multiqc'
 
 workflow {
+    main:
     print_header()
 
     Channel
@@ -63,7 +64,161 @@ workflow {
         .mix(VARIANT_MULTIQC.out.versions)
         .collect()
 
-    MULTIQC(ch_multiqc_files)
+    MULTIQC(ch_multiqc_files, file("${projectDir}/assets/multiqc_config.yml", checkIfExists: true))
+
+    publish:
+    fastqc_raw_reports = FASTQC_RAW.out.reports
+    fastqc_raw_versions = FASTQC_RAW.out.versions
+    fastp_reports = FASTP.out.reports
+    trimmed_reads = FASTP.out.reads
+    fastqc_trimmed_reports = FASTQC_TRIMMED.out.reports
+    fastqc_trimmed_versions = FASTQC_TRIMMED.out.versions
+    bwa_index = BWA_INDEX.out.index
+    bwa_index_versions = BWA_INDEX.out.versions
+    samtools_faidx = SAMTOOLS_FAIDX.out.fai
+    samtools_faidx_versions = SAMTOOLS_FAIDX.out.versions
+    bwa_mem_sam = BWA_MEM.out.sam
+    samtools_sort_bam = SAMTOOLS_SORT.out.bam
+    samtools_sort_versions = SAMTOOLS_SORT.out.versions
+    samtools_flagstat = SAMTOOLS_FLAGSTAT.out.stats
+    samtools_flagstat_versions = SAMTOOLS_FLAGSTAT.out.versions
+    bcftools_vcf = BCFTOOLS_CALL.out.vcf
+    bcftools_stats = BCFTOOLS_CALL.out.stats
+    bcftools_tables = BCFTOOLS_CALL.out.table
+    bcftools_reports = BCFTOOLS_CALL.out.report
+    freebayes_vcf = FREEBAYES_CALL.out.vcf
+    freebayes_tables = FREEBAYES_CALL.out.table
+    freebayes_summaries = FREEBAYES_CALL.out.summary
+    freebayes_reports = FREEBAYES_CALL.out.report
+    variant_comparison_tables = VARIANT_COMPARE.out.table
+    variant_comparison_summaries = VARIANT_COMPARE.out.summary
+    variant_comparison_reports = VARIANT_COMPARE.out.report
+    variant_comparison_versions = VARIANT_COMPARE.out.versions
+    multiqc_report = MULTIQC.out.report
+    multiqc_data = MULTIQC.out.data
+    multiqc_versions = MULTIQC.out.versions
+}
+
+output {
+    fastqc_raw_reports {
+        path 'fastqc/raw'
+    }
+
+    fastqc_raw_versions {
+        path 'fastqc/raw'
+    }
+
+    fastp_reports {
+        path 'fastp'
+    }
+
+    trimmed_reads {
+        path 'trimmed'
+    }
+
+    fastqc_trimmed_reports {
+        path 'fastqc/trimmed'
+    }
+
+    fastqc_trimmed_versions {
+        path 'fastqc/trimmed'
+    }
+
+    bwa_index {
+        path 'reference'
+    }
+
+    bwa_index_versions {
+        path 'reference'
+    }
+
+    samtools_faidx {
+        path 'reference'
+    }
+
+    samtools_faidx_versions {
+        path 'reference'
+    }
+
+    bwa_mem_sam {
+        path 'alignment/sam'
+    }
+
+    samtools_sort_bam {
+        path 'alignment/bam'
+    }
+
+    samtools_sort_versions {
+        path 'alignment/bam'
+    }
+
+    samtools_flagstat {
+        path 'alignment/qc'
+    }
+
+    samtools_flagstat_versions {
+        path 'alignment/qc'
+    }
+
+    bcftools_vcf {
+        path 'variants/vcf/bcftools'
+    }
+
+    bcftools_stats {
+        path 'variants/qc'
+    }
+
+    bcftools_tables {
+        path 'variants/tables/bcftools'
+    }
+
+    bcftools_reports {
+        path 'variants/reports/bcftools'
+    }
+
+    freebayes_vcf {
+        path 'variants/vcf/freebayes'
+    }
+
+    freebayes_tables {
+        path 'variants/tables/freebayes'
+    }
+
+    freebayes_summaries {
+        path 'variants/qc/freebayes'
+    }
+
+    freebayes_reports {
+        path 'variants/reports/freebayes'
+    }
+
+    variant_comparison_tables {
+        path 'variants/comparison'
+    }
+
+    variant_comparison_summaries {
+        path 'variants/comparison'
+    }
+
+    variant_comparison_reports {
+        path 'variants/comparison'
+    }
+
+    variant_comparison_versions {
+        path 'variants/comparison'
+    }
+
+    multiqc_report {
+        path 'multiqc'
+    }
+
+    multiqc_data {
+        path 'multiqc'
+    }
+
+    multiqc_versions {
+        path 'multiqc'
+    }
 }
 
 def print_header() {

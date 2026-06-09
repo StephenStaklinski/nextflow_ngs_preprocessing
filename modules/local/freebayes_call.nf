@@ -2,11 +2,6 @@ process FREEBAYES_CALL {
     tag "${meta.id}"
     label 'process_low'
 
-    publishDir "${params.outdir}/variants/vcf/freebayes", mode: 'copy', pattern: "*.freebayes.vcf"
-    publishDir "${params.outdir}/variants/tables/freebayes", mode: 'copy', pattern: "*.freebayes.variants.tsv"
-    publishDir "${params.outdir}/variants/qc/freebayes", mode: 'copy', pattern: "*.freebayes.summary.tsv"
-    publishDir "${params.outdir}/variants/reports/freebayes", mode: 'copy', pattern: "*.freebayes.variants.html"
-
     input:
     tuple val(meta), path(bam), path(bai), path(fasta), path(fai)
 

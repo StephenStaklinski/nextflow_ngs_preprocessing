@@ -2,8 +2,6 @@ process SAMTOOLS_FLAGSTAT {
     tag "${meta.id}"
     label 'process_single'
 
-    publishDir "${params.outdir}/alignment/qc", mode: 'copy'
-
     input:
     tuple val(meta), path(bam), path(bai)
 

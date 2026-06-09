@@ -17,7 +17,7 @@ It is intentionally much smaller than a full nf-core template so you can inspect
 
 Prerequisites:
 
-- Nextflow `>=23.10.0`
+- Nextflow `>=25.10.0`
 - Docker, Apptainer, or Singularity
 
 Download the tiny example FASTQs and SARS-CoV-2 reference FASTA:
@@ -99,7 +99,7 @@ Outputs are written under `results/test` when using `-profile test`:
 - `conf/base.config`: process resources and containers
 - `conf/test.config`: tiny test-data defaults
 
-The structure borrows core nf-core conventions: DSL2 modules, `params.input`, `params.outdir`, process labels, containerized tools from BioContainers, test profile, `versions.yml` files, and MultiQC reporting.
+The structure borrows core nf-core conventions: DSL2 modules, `params.input`, centralized workflow outputs, process labels, containerized tools from BioContainers, test profile, `versions.yml` files, and MultiQC reporting.
 
 ## Note
 

@@ -2,8 +2,6 @@ process FASTQC {
     tag "${meta.id}:${stage}"
     label 'process_low'
 
-    publishDir "${params.outdir}/fastqc", mode: 'copy'
-
     input:
     tuple val(meta), path(reads), val(stage)
 

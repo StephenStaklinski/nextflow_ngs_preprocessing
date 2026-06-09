@@ -2,10 +2,6 @@ process FASTP {
     tag "${meta.id}"
     label 'process_low'
 
-    publishDir "${params.outdir}/fastp", mode: 'copy', pattern: "*.json"
-    publishDir "${params.outdir}/fastp", mode: 'copy', pattern: "*.html"
-    publishDir "${params.outdir}/trimmed", mode: 'copy', pattern: "*.trim.fastq.gz"
-
     input:
     tuple val(meta), path(reads)
 

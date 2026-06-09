@@ -2,8 +2,6 @@ process VARIANT_COMPARE {
     tag "${meta.id}"
     label 'process_single'
 
-    publishDir "${params.outdir}/variants/comparison", mode: 'copy'
-
     input:
     tuple val(meta), path(bcftools_table), path(freebayes_table)
 
