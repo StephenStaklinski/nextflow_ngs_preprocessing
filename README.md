@@ -91,6 +91,8 @@ Outputs are written under `results/test` when using `-profile test`:
 - `multiqc/`: `multiqc_report.html` with QC metrics, a FreeBayes variant QC table, and caller comparison tables
 - `pipeline_info/`: Nextflow trace, timeline, report, and DAG
 
+Nextflow data lineage is enabled by default. Run metadata and published output records are written to the local lineage store at `.lineage/`.
+
 ## Learning map
 
 - `main.nf`: channel construction and workflow wiring
