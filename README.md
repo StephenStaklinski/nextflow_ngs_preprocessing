@@ -20,24 +20,18 @@ Prerequisites:
 - Nextflow `>=23.10.0`
 - Docker, Apptainer, or Singularity
 
-Check your environment:
-
-```bash
-bash scripts/check_prereqs.sh
-```
-
 Download the tiny example FASTQs and SARS-CoV-2 reference FASTA:
 
 ```bash
-bash scripts/bootstrap_example.sh
-```
+mkdir -p data/fastq data/reference
 
-This creates the ignored input-data directories `data/fastq/` and `data/reference/`, and refreshes `data/samplesheet.csv` with the matching example paths. Run this once after cloning before starting the workflow.
+curl -fL -o data/fastq/sample1_R1.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample1_R1.fastq.gz
+curl -fL -o data/fastq/sample1_R2.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample1_R2.fastq.gz
+curl -fL -o data/fastq/sample2_R1.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample2_R1.fastq.gz
+curl -fL -o data/fastq/sample2_R2.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample2_R2.fastq.gz
 
-Optionally pre-pull containers:
-
-```bash
-bash scripts/bootstrap_example.sh --pull-containers
+curl -fL -o data/reference/MN908947.3.fasta \
+  'https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?id=MN908947.3&db=nuccore&report=fasta&retmode=text'
 ```
 
 Run:
@@ -62,7 +56,15 @@ SAMPLE1_PE,data/fastq/sample1_R1.fastq.gz,data/fastq/sample1_R2.fastq.gz
 The example FASTQs in `data/fastq/` and reference FASTA in `data/reference/` are intentionally not committed to GitHub. Recreate them with:
 
 ```bash
-bash scripts/bootstrap_example.sh
+mkdir -p data/fastq data/reference
+
+curl -fL -o data/fastq/sample1_R1.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample1_R1.fastq.gz
+curl -fL -o data/fastq/sample1_R2.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample1_R2.fastq.gz
+curl -fL -o data/fastq/sample2_R1.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample2_R1.fastq.gz
+curl -fL -o data/fastq/sample2_R2.fastq.gz https://raw.githubusercontent.com/nf-core/test-datasets/viralrecon/illumina/amplicon/sample2_R2.fastq.gz
+
+curl -fL -o data/reference/MN908947.3.fasta \
+  'https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?id=MN908947.3&db=nuccore&report=fasta&retmode=text'
 ```
 
 ## Outputs
