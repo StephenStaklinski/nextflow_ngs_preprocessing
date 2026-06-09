@@ -92,7 +92,7 @@ Outputs are written under `results/test` when using `-profile test`:
 ## Learning map
 
 - `main.nf`: channel construction and workflow wiring
-- `modules/local/*/main.nf`: individual process definitions
+- `modules/local/*.nf`: individual process definitions
 - `nextflow.config`: default parameters and execution profiles
 - `conf/base.config`: process resources and containers
 - `conf/test.config`: tiny test-data defaults

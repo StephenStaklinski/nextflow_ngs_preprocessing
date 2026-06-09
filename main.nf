@@ -2,19 +2,19 @@
 
 nextflow.enable.dsl = 2
 
-include { FASTQC as FASTQC_RAW } from './modules/local/fastqc/main'
-include { FASTQC as FASTQC_TRIMMED } from './modules/local/fastqc/main'
-include { FASTP } from './modules/local/fastp/main'
-include { BWA_INDEX } from './modules/local/bwa_index/main'
-include { BWA_MEM } from './modules/local/bwa_mem/main'
-include { SAMTOOLS_FAIDX } from './modules/local/samtools_faidx/main'
-include { SAMTOOLS_SORT } from './modules/local/samtools_sort/main'
-include { SAMTOOLS_FLAGSTAT } from './modules/local/samtools_flagstat/main'
-include { BCFTOOLS_CALL } from './modules/local/bcftools_call/main'
-include { FREEBAYES_CALL } from './modules/local/freebayes_call/main'
-include { VARIANT_COMPARE } from './modules/local/variant_compare/main'
-include { VARIANT_MULTIQC } from './modules/local/variant_multiqc/main'
-include { MULTIQC } from './modules/local/multiqc/main'
+include { FASTQC as FASTQC_RAW } from './modules/local/fastqc'
+include { FASTQC as FASTQC_TRIMMED } from './modules/local/fastqc'
+include { FASTP } from './modules/local/fastp'
+include { BWA_INDEX } from './modules/local/bwa_index'
+include { BWA_MEM } from './modules/local/bwa_mem'
+include { SAMTOOLS_FAIDX } from './modules/local/samtools_faidx'
+include { SAMTOOLS_SORT } from './modules/local/samtools_sort'
+include { SAMTOOLS_FLAGSTAT } from './modules/local/samtools_flagstat'
+include { BCFTOOLS_CALL } from './modules/local/bcftools_call'
+include { FREEBAYES_CALL } from './modules/local/freebayes_call'
+include { VARIANT_COMPARE } from './modules/local/variant_compare'
+include { VARIANT_MULTIQC } from './modules/local/variant_multiqc'
+include { MULTIQC } from './modules/local/multiqc'
 
 workflow {
     print_header()
